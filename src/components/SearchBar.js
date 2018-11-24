@@ -71,7 +71,7 @@ class Home extends Component {
           <div>
             <div>
               <form onSubmit={this.handleSubmit}>
-                <input type="text" placeholder="Busca tu Gifs favoritos" onChange={this.handleChange} />
+                <input type="text" placeholder="Search here!" onChange={this.handleChange} />
               </form>
             </div>
           </div>
