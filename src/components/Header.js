@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
 import SearchBar from './SearchBar';
+import Toggle from './Toggle';
 
-function Header(props) {
+function Header() {
+  //Initial data of toggle
   const [toggle, useToggle] = useState(false);
 
-  const _toggleUpdate = () => {
-    return useToggle
-  }
+  //Update the value
+  const toggleUpdate = () => useToggle(!toggle);
+
   return (
-    <div>
-      <div>My Toggle</div>
+    <>
+      <Toggle clicked={toggleUpdate} toggled={toggle} />
       <SearchBar />
-    </div>
+    </>
   );
 }
 export default Header;
