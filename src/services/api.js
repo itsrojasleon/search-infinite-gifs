@@ -6,6 +6,7 @@ const api = {
     async getGifs(term = '', limit = 0) {
       const response = await fetch(`${BASE_URL}=${term}&api_key=${API_KEY}&limit=${limit}`);
       const data = await response.json();
+      console.log(data);
       return data;
     },
   }

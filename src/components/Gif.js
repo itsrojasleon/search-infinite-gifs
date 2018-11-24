@@ -11,7 +11,7 @@ class Gif extends Component {
 
   render() {
     return (
-      <section className="container-gifs">
+      <section>
         <GifImage onSelected={this.setSelected}  images={this.props} />
       </section>
     )

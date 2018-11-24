@@ -11,9 +11,6 @@ class Home extends Component {
       limit: 12,
       loading: true,
     };
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-    this.scrolling = this.scrolling.bind(this);
   }
 
   componentDidMount() {
@@ -24,13 +21,13 @@ class Home extends Component {
     window.removeEventListener('scroll', this.scrolling);
   }
 
-  handleChange(term) {
+  handleChange = term => {
     this.setState({
       term: term.target.value,
     })
   }
 
-  async handleSubmit(e) {
+  handleSubmit = async (e) => {
     e.preventDefault();
 
     const response = await api.gifs.getGifs(this.state.term, this.state.limit);
@@ -43,7 +40,7 @@ class Home extends Component {
     });
   }
 
-  async scrolling() {
+  scrolling = async () => {
 
     if(this.state.loading) return null;
 
@@ -70,17 +67,17 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <div className="container-fluid container-search-bar">
-          <div className="row">
-            <div className="col s12 l6 offset-l3">
+        <div>
+          <div>
+            <div>
               <form onSubmit={this.handleSubmit}>
-                <input className="search-bar" type="text" placeholder="Busca tu Gifs favoritos" onChange={this.handleChange} />
+                <input type="text" placeholder="Busca tu Gifs favoritos" onChange={this.handleChange} />
               </form>
             </div>
           </div>
         </div>
-        <div className="container-fluid">
-          <div className="row">
+        <div>
+          <div>
             {this.state.gifs
               .map((gif) => <Gif key={gif.id} {...gif} />)}
           </div>
