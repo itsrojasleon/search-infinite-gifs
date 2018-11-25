@@ -1,86 +1,82 @@
-import React, { Component } from 'react';
+import React, { useState, useReducer } from 'react';
 import { connect } from 'react-redux';
-import api from '../services/api';
-import Gif from './Gif';
+// import api from '../services/api';
+// import Gif from './Gif';
 
 import { fetchGifs } from '../actions';
 
-class Home extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      gifs: [],
-      term: '',
-      limit: 12,
-      loading: true,
-    };
-  }
+function Home(props) {
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     gifs: [],
+  //     term: '',
+  //     limit: 12,
+  //     loading: true,
+  //   };
+  // }
 
-  componentDidMount() {
-    window.addEventListener('scroll', this.scrolling);
-  }
+  // componentDidMount() {
+  //   window.addEventListener('scroll', this.scrolling);
+  // }
 
-  componentWillUnmount() {
-    window.removeEventListener('scroll', this.scrolling);
-  }
+  // componentWillUnmount() {
+  //   window.removeEventListener('scroll', this.scrolling);
+  // }
 
-  handleChange = term => {
-    this.setState({
-      term: term.target.value,
-    })
-  }
+  const [term, useTerm] = useState('');
+  const handleChange = ({ target: { value } }) => useTerm(value);
 
-  handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await api.gifs.getGifs(this.state.term, this.state.limit);
-    const gifs = response.data;
+    props.fetchGifs(term, 12)
 
-    this.setState({
-      gifs,
-      limit: 12,
-      loading: false,
-    });
-    this.props.fetchGifs('baby', 12)
+    // const response = await api.gifs.getGifs(this.state.term, this.state.limit);
+    // const gifs = response.data;
+
+    // this.setState({
+    //   gifs,
+    //   limit: 12,
+    //   loading: false,
+    // });
   }
 
-  scrolling = async () => {
+  // scrolling = async () => {
 
-    if(this.state.loading) return null;
+  //   if(this.state.loading) return null;
 
-    const scrolled = window.scrollY;
-    const vhHeigth = window.innerHeight;
-    const fullHeight = document.body.clientHeight;
+  //   const scrolled = window.scrollY;
+  //   const vhHeigth = window.innerHeight;
+  //   const fullHeight = document.body.clientHeight;
 
-    if(!(scrolled + vhHeigth + 450 >= fullHeight)) {
-      return null;
-    }
+  //   if(!(scrolled + vhHeigth + 450 >= fullHeight)) {
+  //     return null;
+  //   }
 
-    this.setState({ loading: true }, async () => {
-      const response = await api.gifs.getGifs(this.state.term, this.state.limit);
-      const gifs = response.data;
+  //   this.setState({ loading: true }, async () => {
+  //     const response = await api.gifs.getGifs(this.state.term, this.state.limit);
+  //     const gifs = response.data;
 
-      this.setState({
-        gifs: gifs,
-        limit: this.state.limit + 12,
-        loading: false,
-      });
-    })
-  }
-
-  render() {
-    return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <input type="text" placeholder="Search here!" onChange={this.handleChange} />
-          <input type="submit" value="Submit" />
-        </form>
-        <div>
-          {this.state.gifs
-            .map((gif) => <Gif key={gif.id} {...gif} />)}
-        </div>
-      </div>
-    )
-  }
+  //     this.setState({
+  //       gifs: gifs,
+  //       limit: this.state.limit + 12,
+  //       loading: false,
+  //     });
+  //   })
+  // }
+  return (
+    <div>
+      <form onSubmit={handleSubmit}>
+        <input type="text" placeholder="Search here!" onChange={handleChange} />
+        <input type="submit" value="Submit" />
+        {term}
+      </form>
+      {/* <div>
+        {this.state.gifs
+          .map((gif) => <Gif key={gif.id} {...gif} />)}
+      </div> */}
+    </div>
+  )
 }
 export default connect(null, { fetchGifs })(Home);
