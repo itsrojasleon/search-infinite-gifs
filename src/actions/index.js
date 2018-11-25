@@ -8,7 +8,7 @@ const STICKERS_URL = 'https://api.giphy.com/v1/stickers/search?q';
 
 export const fetchGifs = (term, limit = 0) => async dispatch => {
   const response = await fetch(`${GIFS_URL}=${term}&api_key=${API_KEY}&limit=${limit}`);
-  const data = await response.json();
+  const { data } = await response.json();
   dispatch({ type: FETCH_GIFS, payload: data });
 }
 
