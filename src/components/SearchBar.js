@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import api from '../services/api';
 import Gif from './Gif';
+
+import { fetchGifs } from '../actions';
 
 class Home extends Component {
   constructor(props) {
@@ -38,6 +41,7 @@ class Home extends Component {
       limit: 12,
       loading: false,
     });
+    this.props.fetchGifs('baby', 12)
   }
 
   scrolling = async () => {
@@ -67,23 +71,16 @@ class Home extends Component {
   render() {
     return (
       <div>
+        <form onSubmit={this.handleSubmit}>
+          <input type="text" placeholder="Search here!" onChange={this.handleChange} />
+          <input type="submit" value="Submit" />
+        </form>
         <div>
-          <div>
-            <div>
-              <form onSubmit={this.handleSubmit}>
-                <input type="text" placeholder="Search here!" onChange={this.handleChange} />
-              </form>
-            </div>
-          </div>
-        </div>
-        <div>
-          <div>
-            {this.state.gifs
-              .map((gif) => <Gif key={gif.id} {...gif} />)}
-          </div>
+          {this.state.gifs
+            .map((gif) => <Gif key={gif.id} {...gif} />)}
         </div>
       </div>
     )
   }
 }
-export default Home;
+export default connect(null, { fetchGifs })(Home);

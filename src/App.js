@@ -2,7 +2,6 @@ import React from 'react';
 import Home from './pages/Home';
 import Error404 from './pages/Error404';
 import { Route, Switch } from 'react-router-dom';
-
 import Header from './components/Header';
 
 function Routes() {
