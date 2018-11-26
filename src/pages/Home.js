@@ -1,12 +1,19 @@
 import React from 'react';
+import styled from 'styled-components';
+
 import Gifs from '../components/Gif';
+
+const Container = styled.div`
+  width: 80%;
+  background-color: red;
+`; 
 
 export default class Home extends React.Component {
   render() {
     return (
-      <div>
+      <Container>
         <Gifs />
-      </div>
+      </Container>
     )
   }
 }
