@@ -14,6 +14,6 @@ export const fetchGifs = (term, limit = 0) => async dispatch => {
 
 export const fetchStickers = (term, limit = 0) => async dispatch => {
   const response = await fetch(`${STICKERS_URL}=${term}&api_key=${API_KEY}&limit=${limit}`);
-  const data = await response.json();
+  const { data } = await response.json();
   dispatch({ type: FETCH_STICKERS, payload: data });
 }

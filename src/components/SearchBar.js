@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 // import api from '../services/api';
 // import Gif from './Gif';
 
-import { fetchGifs } from '../actions';
+import { fetchGifs, fetchStickers } from '../actions';
 
 function Home(props) {
   // constructor(props) {
@@ -30,7 +30,12 @@ function Home(props) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    props.fetchGifs(term, 12)
+    if (props.toggle === false) {
+      props.fetchGifs(term, 12);
+    } else {
+      props.fetchStickers(term, 12);
+    }
+    
 
     // const response = await api.gifs.getGifs(this.state.term, this.state.limit);
     // const gifs = response.data;
@@ -78,4 +83,4 @@ function Home(props) {
     </div>
   )
 }
-export default connect(null, { fetchGifs })(Home);
+export default connect(null, { fetchGifs, fetchStickers })(Home);

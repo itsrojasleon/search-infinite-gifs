@@ -12,7 +12,7 @@ function Header() {
   return (
     <>
       <Toggle clicked={toggleUpdate} toggled={toggle} />
-      <SearchBar />
+      <SearchBar toggle={toggle} />
     </>
   );
 }
