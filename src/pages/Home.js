@@ -5,7 +5,7 @@ import Gifs from '../components/Gif';
 
 const Container = styled.div`
   width: 80%;
-  background-color: red;
+  margin: auto;
 `; 
 
 export default class Home extends React.Component {
