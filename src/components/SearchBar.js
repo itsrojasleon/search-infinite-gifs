@@ -1,4 +1,4 @@
-import React, { useState, useReducer } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 // import api from '../services/api';
 // import Gif from './Gif';
@@ -70,7 +70,6 @@ function Home(props) {
       <form onSubmit={handleSubmit}>
         <input type="text" placeholder="Search here!" onChange={handleChange} />
         <input type="submit" value="Submit" />
-        {term}
       </form>
       {/* <div>
         {this.state.gifs

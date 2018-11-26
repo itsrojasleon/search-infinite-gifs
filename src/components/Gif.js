@@ -1,20 +1,18 @@
-import React, { Component } from 'react';
-import GifImage from './GifImage';
+import React from 'react';
+import { connect } from 'react-redux';
 
-class Gif extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isSelected: null,
-    };
-  }
-
-  render() {
-    return (
-      <section>
-        <GifImage onSelected={this.setSelected}  images={this.props} />
-      </section>
-    )
-  }
+function Gif({ gifs }) {
+  return (
+    <section>
+      {gifs.map((gif) => (
+        <div key={gif.id}>
+          <img src={gif.images.downsized_large.url} alt={gif.images.downsized_large.url} /> 
+        </div>
+      ))}
+    </section>
+  )
 }
-export default Gif;
+function mapDispatchToProps({ gifs }) {
+ return { gifs };
+} 
+export default connect(mapDispatchToProps)(Gif);
