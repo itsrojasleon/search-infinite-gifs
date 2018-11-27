@@ -38,7 +38,7 @@ function Gif({ gifs, stickers }) {
         </Item>
       ))}
     </Wrapper>
-  )
+  );
 }
 function mapDispatchToProps({ gifs, stickers }) {
  return { gifs, stickers };

@@ -1,8 +1,13 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { toggleTerm } from '../actions';
 
-function Toggle ({ toggled, clicked }) {
+function Toggle ({ toggled, toggleTerm }) {
   return (
-    <button onClick={clicked}>{toggled !== true ? 'GIFS' : 'STICKERS'}</button>
+    <button onClick={toggleTerm}>{toggled !== true ? 'GIFS' : 'STICKERS'}</button>
   );
 }
-export default Toggle;
+function mapStateToProps({ toggle }) {
+  return { toggled: toggle };
+}
+export default connect(mapStateToProps, { toggleTerm })(Toggle);

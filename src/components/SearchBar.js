@@ -25,7 +25,9 @@ function Home(props) {
   // }
 
   const [term, useTerm] = useState('');
-  const handleChange = ({ target: { value } }) => useTerm(value);
+  const handleChange = ({ target: { value } }) => {
+    return useTerm(value);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();

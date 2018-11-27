@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import styled from 'styled-components';
 
 import Gifs from '../components/Gif';
@@ -8,12 +8,13 @@ const Container = styled.div`
   margin: auto;
 `; 
 
-export default class Home extends React.Component {
-  render() {
-    return (
-      <Container>
+function Home() {
+  return (
+    <Container>
+      <Suspense fallback={<div>Loading....</div>}>
         <Gifs />
-      </Container>
-    )
-  }
+      </Suspense>
+    </Container>
+  )
 }
+export default Home;
