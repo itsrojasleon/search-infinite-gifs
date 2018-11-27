@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Gifs from '../components/Gif';
 
 const Container = styled.div`
-  width: 80%;
+  width: 90%;
   margin: auto;
 `; 
 
