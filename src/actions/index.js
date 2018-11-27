@@ -1,4 +1,10 @@
-import { FETCH_GIFS, FETCH_STICKERS, TOGGLE_TERM } from './types';
+import {
+  FETCH_GIFS,
+  CANCEL_GIFS,
+  FETCH_STICKERS,
+  CANCEL_STICKERS,
+  TOGGLE_TERM
+} from './types';
 
 // This API_KEY should be private
 const API_KEY = 'a0670008a6614471bbe718a8378dcd4c';
@@ -11,12 +17,18 @@ export const fetchGifs = (term, limit = 0) => async dispatch => {
   const { data } = await response.json();
   dispatch({ type: FETCH_GIFS, payload: data });
 }
+export const cancelGifs = () => {
+  return { type: CANCEL_GIFS }
+};
 
 export const fetchStickers = (term, limit = 0) => async dispatch => {
   const response = await fetch(`${STICKERS_URL}=${term}&api_key=${API_KEY}&limit=${limit}`);
   const { data } = await response.json();
   dispatch({ type: FETCH_STICKERS, payload: data });
 }
+export const cancelStickers = () => {
+  return { type: CANCEL_STICKERS }
+};
 
 export const toggleTerm = () => {
   return {

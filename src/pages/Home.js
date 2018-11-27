@@ -1,7 +1,7 @@
-import React, { Suspense } from 'react';
+import React, { lazy, Suspense } from 'react';
 import styled from 'styled-components';
 
-import Gifs from '../components/Gif';
+const Gifs = lazy(() => import('../components/Gif'));
 
 const Container = styled.div`
   width: 90%;
