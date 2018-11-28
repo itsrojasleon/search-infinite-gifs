@@ -12,17 +12,16 @@ by Mauricio Allende (https://mallendeo.com/)
   position: relative;
   cursor: pointer;
   user-select: none;
-  background: #A5B3B3;
+  background: white;
   border-radius: 4em;
   padding: 4px;
   transition: all 0.4s ease;
-  border: 2px solid #000;
 }
 .toggle-input:focus + .toggle-btn::after,
 .toggle-btn:active::after {
   box-sizing: initial;
   box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1),
-    0 4px 0 rgba(0, 0, 0, 0.08), inset 0px 0px 0px 3px #9c9c9c;
+    0 4px 0 rgba(0, 0, 0, 0.08), inset 0px 0px 0px 3px #f2f2f2;
 }
 .toggle-btn::after {
   left: 0;
@@ -42,7 +41,7 @@ by Mauricio Allende (https://mallendeo.com/)
   left: 50%;
 }
 .toggle-btn.toggle-btn-on {
-  background: #1DF062;
+  background: black;
 }
 .toggle-btn.toggle-btn-on:active {
   box-shadow: none;
