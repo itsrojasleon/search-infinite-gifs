@@ -11,6 +11,11 @@ const Container = styled.div`
 const H3 = styled.h3`
   font-family: "Colfax Bold";
   font-size: 2em;
+  width: 50%;
+  text-align: center;
+  margin: 10px auto 10px auto; 
+  border-bottom: 1px solid #f2f2f2;
+  padding-bottom: 10px;
 `;
 
 function Home({ toggle }) {

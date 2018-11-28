@@ -1,7 +1,32 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
 
 import { fetchGifs, fetchStickers, cancelGifs, cancelStickers } from '../actions';
+
+const TextInput = styled.input`
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 1em;
+  border: none;
+  background-color: rgb(80,80,80);
+  color: white;
+  &:focus {
+    outline: none;
+  }
+`;
+const SubmitInput = styled.input`
+  display: none;
+  @media(max-width: 769px) {
+    background-color: black;
+    color: white;
+    padding: 5px 10px; 
+    border: none;
+    border-radius: 10px;
+    font-size: .8em;
+    display: block;
+  }
+`;
 
 function Home(props) {
   // constructor(props) {
@@ -74,8 +99,8 @@ function Home(props) {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <input type="text" placeholder="Search here!" onChange={handleChange} />
-        <input type="submit" value="Submit" />
+        <TextInput type="text" placeholder={`Search ${props.toggle ? 'Stickers' : 'Gifs'}`} onChange={handleChange} />
+        <SubmitInput type="submit" value="Submit" />
       </form>
       {/* <div>
         {this.state.gifs
