@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-// import api from '../services/api';
-// import Gif from './Gif';
 
-import { fetchGifs, fetchStickers } from '../actions';
+import { fetchGifs, fetchStickers, cancelGifs, cancelStickers } from '../actions';
 
 function Home(props) {
   // constructor(props) {
@@ -34,8 +32,10 @@ function Home(props) {
 
     if (props.toggle === false) {
       props.fetchGifs(term, 12);
+      props.cancelStickers();
     } else {
       props.fetchStickers(term, 12);
+      props.cancelGifs();
     }
     
     // const response = await api.gifs.getGifs(this.state.term, this.state.limit);
@@ -85,4 +85,4 @@ function Home(props) {
   )
 }
 function mapStateToProps({ toggle }) {return { toggle }}
-export default connect(mapStateToProps, { fetchGifs, fetchStickers })(Home);
+export default connect(mapStateToProps, { fetchGifs, fetchStickers, cancelGifs, cancelStickers })(Home);
