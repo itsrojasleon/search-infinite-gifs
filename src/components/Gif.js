@@ -26,17 +26,21 @@ function Gif({ gifs, stickers }) {
   // Choose gifs or stickers
   const renderContent = gifs.length > 1 ? gifs : stickers;
   return (
-    <Wrapper>
-      {renderContent.map(({
-        images, 
-        id,
-        slug
-      }) => (
-        <Item width={images.downsized_large.width} height={images.downsized_large.height} key={id}>
-          <Image src={images.downsized_large.url} alt={slug} /> 
-        </Item>
-      ))}
-    </Wrapper>
+    <>
+      {renderContent.length === 0 ? null : (
+        <Wrapper>
+          {renderContent.map(({
+              images, 
+              id,
+              slug
+            }) => (
+              <Item width={images.downsized_large.width} height={images.downsized_large.height} key={id}>
+                <Image src={images.downsized_large.url} alt={slug} /> 
+              </Item>
+            ))}
+        </Wrapper>
+      )}
+    </>
   );
 }
 function mapDispatchToProps({ gifs, stickers }) {

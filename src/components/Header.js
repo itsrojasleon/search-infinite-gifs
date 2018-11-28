@@ -6,7 +6,7 @@ import Toggle from './Toggle';
 const NavBar = styled.nav`
   width: 100%;
   border-bottom: 1px solid #ccc;
-  background-color: black;
+  background-color: #020304;
   padding: 12px;
   display: flex;
   justify-content: space-around;

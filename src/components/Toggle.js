@@ -8,10 +8,7 @@ function Toggle ({ toggled, toggleTerm }) {
   const render = () => {
     return toggleTerm();
   }
-  return (
-    // <button onClick={render}>{toggled === false ? 'GIFS' : 'STICKERS'}</button>
-    <Switch />
-  );
+  return <Switch on={toggled} onClick={render} />;
 }
 function mapStateToProps({ toggle }) {
   return { toggled: toggle };
