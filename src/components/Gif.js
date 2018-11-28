@@ -25,7 +25,6 @@ const Image = styled.img`
 function Gif({ gifs, stickers }) {
   // Choose gifs or stickers
   const renderContent = gifs.length > 1 ? gifs : stickers;
-
   return (
     <Wrapper>
       {renderContent.map(({

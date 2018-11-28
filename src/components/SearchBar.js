@@ -38,7 +38,6 @@ function Home(props) {
       props.fetchStickers(term, 12);
     }
     
-
     // const response = await api.gifs.getGifs(this.state.term, this.state.limit);
     // const gifs = response.data;
 
@@ -85,4 +84,5 @@ function Home(props) {
     </div>
   )
 }
-export default connect(null, { fetchGifs, fetchStickers })(Home);
+function mapStateToProps({ toggle }) {return { toggle }}
+export default connect(mapStateToProps, { fetchGifs, fetchStickers })(Home);

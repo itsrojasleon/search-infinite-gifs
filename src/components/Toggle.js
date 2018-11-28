@@ -1,14 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { toggleTerm, cancelGifs, cancelStickers } from '../actions';
+import { toggleTerm } from '../actions';
 
-function Toggle ({ toggled, toggleTerm, cancelGifs, cancelStickers }) {
-  const cancel = () => {
-    if (!toggled) return cancelGifs();
-    else return cancelStickers();
-  }
+function Toggle ({ toggled, toggleTerm }) {
   const render = () => {
-    return toggleTerm() && cancel();
+    return toggleTerm();
   }
   return (
     <button onClick={render}>{toggled === false ? 'GIFS' : 'STICKERS'}</button>
@@ -17,4 +13,4 @@ function Toggle ({ toggled, toggleTerm, cancelGifs, cancelStickers }) {
 function mapStateToProps({ toggle }) {
   return { toggled: toggle };
 }
-export default connect(mapStateToProps, { toggleTerm, cancelGifs, cancelStickers })(Toggle);
+export default connect(mapStateToProps, { toggleTerm })(Toggle);
