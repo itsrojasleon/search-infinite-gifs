@@ -14,6 +14,12 @@ const NavBar = styled.nav`
 `;
 const I = styled.i`
   color: white;
+  font-size: 2em;
+  transition: .3s; 
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+  }
 `;
 
 function Header() {
@@ -23,7 +29,9 @@ function Header() {
     <NavBar>
       <Toggle />
       <SearchBar />
-      <I className="fab fa-github"></I>
+      <a href="https://github.com/rojasleon/gifs-and-stickers" target="_blank">
+        <I className="fab fa-github"></I>
+      </a>
     </NavBar>
   );
 }
