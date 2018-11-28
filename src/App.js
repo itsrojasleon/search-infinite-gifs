@@ -6,7 +6,7 @@ import Header from './components/Header';
 
 function Routes() {
   return (
-    <div>
+    <div style={{ backgroundColor: 'rgb(240, 240, 240)' }}>
       <Header />
       <Switch>
         <Route exact path="/" component={Home} />
