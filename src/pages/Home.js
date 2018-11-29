@@ -2,7 +2,7 @@ import React, { lazy, Suspense } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 
-const Gifs = lazy(() => import('../components/Gif'));
+const GifsAndStickers = lazy(() => import('../components/GifsAndStickers'));
 
 const Container = styled.div`
   width: 90%;
@@ -23,7 +23,7 @@ function Home({ toggle }) {
     <Container>
       <H3>{toggle ? 'Stickers' : 'Gifs'}</H3>
       <Suspense fallback={<div>Loading....</div>}>
-        <Gifs />
+        <GifsAndStickers />
       </Suspense>
     </Container>
   )
