@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import SearchBar from './SearchBar';
 import Toggle from './Toggle';
@@ -11,6 +11,37 @@ const NavBar = styled.nav`
   display: flex;
   justify-content: space-around;
   align-items: center;
+  @media(max-width: 769px) {
+    flex-direction: column;
+  }
+`;
+const Content = styled.div`
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  @media(max-width: 769px) {
+    display: ${props => props.open ? 'block' : 'none'};
+  }
+`;
+const Icons = styled.div`
+  @media(max-width: 769px) {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+  }
+`;
+const Icon = styled.i`
+  font-size: 1.6em;
+  color: white;
+  display: none;
+  text-align: right;
+  &:hover {
+    cursor: pointer; 
+  }
+  @media(max-width: 769px) {
+    display: block;
+  }
 `;
 const I = styled.i`
   color: white;
@@ -23,15 +54,22 @@ const I = styled.i`
 `;
 
 function Header() {
-  // const [toggle, useToggle] = useState(false);
-  // const toggled = () => useToggle(!toggle);
+  const [menu, useMenu] = useState(false);
+  const toggleMenu = () => useMenu(!menu);
   return (
-    <NavBar>
-      <Toggle />
-      <SearchBar />
-      <a href="https://github.com/rojasleon/gifs-and-stickers" target="_blank">
-        <I className="fab fa-github"></I>
-      </a>
+    <NavBar showContent={menu}>
+      <Icons>
+        {!menu ? <Icon onClick={toggleMenu} className="fa fa-bars" aria-hidden="true"></Icon>
+        : <Icon onClick={toggleMenu} className="fa fa-times" aria-hidden="true"></Icon>
+        }
+      </Icons>
+      <Content open={menu}>
+        <Toggle />
+        <SearchBar />
+        <a href="https://github.com/rojasleon/gifs-and-stickers" target="_blank">
+          <I className="fab fa-github"></I>
+        </a>
+      </Content>
     </NavBar>
   );
 }
