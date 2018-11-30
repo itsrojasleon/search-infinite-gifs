@@ -99,6 +99,7 @@ function Home(props) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!props.toggle) {
+      useCount(0);
       props.fetchGifs(term, count);
       props.cancelStickers();
     } else {
@@ -107,25 +108,21 @@ function Home(props) {
     }
   }
 
-  // useEffect(() => {
-  //   window.addEventListener('scroll', scrolled);
-  //   return () => {
-  //     window.removeEventListener('scroll', scrolled);
-  //   }
-  // });
+  useEffect(() => {
+    window.addEventListener('scroll', scrolled);
+    return () => {
+      window.removeEventListener('scroll', scrolled);
+    }
+  });
 
   const scrolled = () => {
-    // const scrolled = window.scrollY;
-    // const vhHeigth = window.innerHeight;
-    // const fullHeight = document.body.clientHeight;
+    const scrolled = window.scrollY;
+    const vhHeigth = window.innerHeight;
+    const fullHeight = document.body.clientHeight;
 
-    // if(!(scrolled + vhHeigth + 450 >= fullHeight)) return;
-
-      useCount(count + 12);
-      props.fetchGifs(term, count);
-      props.cancelStickers();
-      
-
+    if(!(scrolled + vhHeigth + 500 >= fullHeight)) return;
+    useCount(count + 12);
+    props.fetchGifs(term, count);     
   }
 
   // scrolling = async () => {
