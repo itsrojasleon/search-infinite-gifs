@@ -4,15 +4,25 @@ import styled from 'styled-components';
 
 import { fetchGifs, fetchStickers, cancelGifs, cancelStickers } from '../actions';
 
+const FormContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 5px;
+`;
+
 const TextInput = styled.input`
   padding: 6px 14px;
   border-radius: 6px;
   font-size: 1em;
-  border: none;
-  background-color: rgb(80,80,80);
-  color: white;
+  border: 1px solid rgb(236,235,235);
+  background-color: white;
+  font-family: "Colfax Regular";
+  color: black;
   &:focus {
     outline: none;
+    border: 1px solid rgb(0,143,255);
   }
 `;
 const SubmitInput = styled.input`
@@ -97,16 +107,12 @@ function Home(props) {
   //   })
   // }
   return (
-    <div>
+    <FormContainer>
       <form onSubmit={handleSubmit}>
         <TextInput type="text" placeholder={`Search ${props.toggle ? 'Stickers' : 'Gifs'}`} onChange={handleChange} />
         <SubmitInput type="submit" value="Submit" />
       </form>
-      {/* <div>
-        {this.state.gifs
-          .map((gif) => <Gif key={gif.id} {...gif} />)}
-      </div> */}
-    </div>
+    </FormContainer>
   )
 }
 function mapStateToProps({ toggle }) {return { toggle }}

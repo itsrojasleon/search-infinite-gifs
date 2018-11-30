@@ -14,7 +14,6 @@ const H3 = styled.h3`
   width: 50%;
   text-align: center;
   margin: 10px auto 10px auto; 
-  border-bottom: 1px solid #ccc;
   padding-bottom: 10px;
 `;
 

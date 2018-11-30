@@ -5,12 +5,6 @@ import Toggle from './Toggle';
 
 const NavBar = styled.nav`
   width: 100%;
-  border-bottom: 1px solid #ccc;
-  background-color: rgb(51,51,51);
-  padding: 12px;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
   @media(max-width: 769px) {
     flex-direction: column;
   }
@@ -20,8 +14,14 @@ const Content = styled.div`
   justify-content: space-around;
   align-items: center;
   width: 100%;
+  padding: 12px;
+  background-color: white;
+  border-bottom: 1px solid rgb(236,235,235);
   @media(max-width: 769px) {
-    display: ${props => props.open ? 'block' : 'none'};
+    display: ${props => props.open ? 'flex' : 'none'};
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 `;
 const Icons = styled.div`
@@ -29,11 +29,12 @@ const Icons = styled.div`
     display: flex;
     justify-content: flex-end;
     width: 100%;
+    padding: 12px; 
   }
 `;
 const Icon = styled.i`
   font-size: 1.6em;
-  color: white;
+  color: black;
   display: none;
   text-align: right;
   &:hover {
@@ -44,13 +45,17 @@ const Icon = styled.i`
   }
 `;
 const I = styled.i`
-  color: white;
+  color: black;
   font-size: 2em;
   transition: .3s; 
   &:hover {
     cursor: pointer;
     transform: scale(1.1);
   }
+`;
+const SearchBarContainer = styled.div`
+  width: 100%;
+  background-color: rgb(250,250,250);
 `;
 
 function Header() {
@@ -65,11 +70,13 @@ function Header() {
       </Icons>
       <Content open={menu}>
         <Toggle />
-        <SearchBar />
         <a href="https://github.com/rojasleon/gifs-and-stickers" target="_blank">
           <I className="fab fa-github"></I>
         </a>
       </Content>
+      <SearchBarContainer>
+        <SearchBar />
+      </SearchBarContainer>
     </NavBar>
   );
 }

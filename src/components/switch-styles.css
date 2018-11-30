@@ -16,6 +16,7 @@ by Mauricio Allende (https://mallendeo.com/)
   border-radius: 4em;
   padding: 4px;
   transition: all 0.4s ease;
+  border: 1px solid rgb(236,235,235);
 }
 .toggle-input:focus + .toggle-btn::after,
 .toggle-btn:active::after {
@@ -41,7 +42,7 @@ by Mauricio Allende (https://mallendeo.com/)
   left: 50%;
 }
 .toggle-btn.toggle-btn-on {
-  background: black;
+  background: rgb(0,143,255);
 }
 .toggle-btn.toggle-btn-on:active {
   box-shadow: none;
