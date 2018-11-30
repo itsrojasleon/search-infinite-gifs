@@ -38,8 +38,10 @@ const Icon = styled.i`
   color: black;
   display: none;
   text-align: right;
+  transition: .3s;
   &:hover {
     cursor: pointer; 
+    color: rgb(135,135,135);
   }
   @media(max-width: 769px) {
     display: block;

@@ -19,6 +19,7 @@ const Form = styled.form`
     display: flex;
     justify-content: space-between;
     align-items: center; 
+    position: relative;
   }
 `;
 const TextInput = styled.input`
@@ -30,27 +31,43 @@ const TextInput = styled.input`
   font-family: "Colfax Regular";
   color: black;
   width: 100%;
+  text-indent: 20px;
   &:focus {
     outline: none;
     border: 1px solid rgb(0,143,255);
   }
+  @media(max-width: 769px) {
+    text-indent: 0;
+  }
 `;
 const C = styled.div`
   width: 100%;
+  position: relative;
 `;
-const Search = styled.i`@media(max-width: 769px){display: none;}`;
+const Search = styled.i`
+  position: absolute;
+  top: 9px;
+  left: 7px;
+  font-size: .9em;
+  color: rgb(187,187,187);
+  @media(max-width: 769px){
+    display: none;
+  }
+`;
 
 const ButtonSubmit = styled.button`
   display: none;
   @media(max-width: 769px) {
-    background-color: black;
+    position: absolute;
+    background-color: rgb(0,143,255);
     color: white;
-    padding: 6px 14px;
+    padding: 7px 14px;
     border: none;
     border-radius: 3px;
     font-size: .8em;
     display: block;
     width: 15%;
+    right: 11px;
   }
 `;
 
@@ -127,7 +144,7 @@ function Home(props) {
       <Form onSubmit={handleSubmit}>
         <C>
           <TextInput type="text" placeholder={`Search ${props.toggle ? 'Stickers' : 'Gifs'}`} onChange={handleChange} />
-          <Search style={{ fontSize: '1.2em' }} className="fas fa-search"></Search>
+          <Search className="fas fa-search"></Search>
         </C>
         <ButtonSubmit type="submit"><i style={{ fontSize: '1.2em' }} className="fas fa-search"></i></ButtonSubmit>
       </Form>
