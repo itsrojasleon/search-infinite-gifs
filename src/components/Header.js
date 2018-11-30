@@ -30,6 +30,7 @@ const Icons = styled.div`
     justify-content: flex-end;
     width: 100%;
     padding: 12px; 
+    background-color: white;
   }
 `;
 const Icon = styled.i`

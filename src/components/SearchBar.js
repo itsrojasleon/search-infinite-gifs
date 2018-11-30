@@ -9,9 +9,18 @@ const FormContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 10px 5px;
 `;
 
+const Form = styled.form`
+  width: 30%;
+  padding: 10px; 
+  @media(max-width: 769px) {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+  }
+`;
 const TextInput = styled.input`
   padding: 6px 14px;
   border-radius: 6px;
@@ -20,21 +29,28 @@ const TextInput = styled.input`
   background-color: white;
   font-family: "Colfax Regular";
   color: black;
+  width: 100%;
   &:focus {
     outline: none;
     border: 1px solid rgb(0,143,255);
   }
 `;
-const SubmitInput = styled.input`
+const C = styled.div`
+  width: 100%;
+`;
+const Search = styled.i`@media(max-width: 769px){display: none;}`;
+
+const ButtonSubmit = styled.button`
   display: none;
   @media(max-width: 769px) {
     background-color: black;
     color: white;
-    padding: 5px 10px; 
+    padding: 6px 14px;
     border: none;
-    border-radius: 10px;
+    border-radius: 3px;
     font-size: .8em;
     display: block;
+    width: 15%;
   }
 `;
 
@@ -108,10 +124,13 @@ function Home(props) {
   // }
   return (
     <FormContainer>
-      <form onSubmit={handleSubmit}>
-        <TextInput type="text" placeholder={`Search ${props.toggle ? 'Stickers' : 'Gifs'}`} onChange={handleChange} />
-        <SubmitInput type="submit" value="Submit" />
-      </form>
+      <Form onSubmit={handleSubmit}>
+        <C>
+          <TextInput type="text" placeholder={`Search ${props.toggle ? 'Stickers' : 'Gifs'}`} onChange={handleChange} />
+          <Search style={{ fontSize: '1.2em' }} className="fas fa-search"></Search>
+        </C>
+        <ButtonSubmit type="submit"><i style={{ fontSize: '1.2em' }} className="fas fa-search"></i></ButtonSubmit>
+      </Form>
     </FormContainer>
   )
 }
