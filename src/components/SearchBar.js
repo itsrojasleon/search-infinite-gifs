@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 
@@ -91,29 +91,41 @@ function Home(props) {
   // }
 
   const [term, useTerm] = useState('');
+  const [count, useCount] = useState(12);
   const handleChange = ({ target: { value } }) => {
     return useTerm(value);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    if (props.toggle === false) {
-      props.fetchGifs(term, 12);
+    if (!props.toggle) {
+      props.fetchGifs(term, count);
       props.cancelStickers();
     } else {
-      props.fetchStickers(term, 12);
+      props.fetchStickers(term, count);
       props.cancelGifs();
     }
-    
-    // const response = await api.gifs.getGifs(this.state.term, this.state.limit);
-    // const gifs = response.data;
+  }
 
-    // this.setState({
-    //   gifs,
-    //   limit: 12,
-    //   loading: false,
-    // });
+  // useEffect(() => {
+  //   window.addEventListener('scroll', scrolled);
+  //   return () => {
+  //     window.removeEventListener('scroll', scrolled);
+  //   }
+  // });
+
+  const scrolled = () => {
+    // const scrolled = window.scrollY;
+    // const vhHeigth = window.innerHeight;
+    // const fullHeight = document.body.clientHeight;
+
+    // if(!(scrolled + vhHeigth + 450 >= fullHeight)) return;
+
+      useCount(count + 12);
+      props.fetchGifs(term, count);
+      props.cancelStickers();
+      
+
   }
 
   // scrolling = async () => {
@@ -148,6 +160,7 @@ function Home(props) {
         </C>
         <ButtonSubmit type="submit"><i style={{ fontSize: '1.2em' }} className="fas fa-search"></i></ButtonSubmit>
       </Form>
+      <p onClick={scrolled}>Load</p>
     </FormContainer>
   )
 }

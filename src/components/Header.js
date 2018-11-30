@@ -73,7 +73,7 @@ function Header() {
       </Icons>
       <Content open={menu}>
         <Toggle />
-        <a href="https://github.com/rojasleon/gifs-and-stickers" target="_blank">
+        <a href="https://github.com/rojasleon/gifs-and-stickers"rel="noopener noreferrer" target="_blank">
           <I className="fab fa-github"></I>
         </a>
       </Content>
