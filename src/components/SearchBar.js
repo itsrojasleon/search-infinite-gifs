@@ -72,24 +72,6 @@ const ButtonSubmit = styled.button`
 `;
 
 function Home(props) {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     gifs: [],
-  //     term: '',
-  //     limit: 12,
-  //     loading: true,
-  //   };
-  // }
-
-  // componentDidMount() {
-  //   window.addEventListener('scroll', this.scrolling);
-  // }
-
-  // componentWillUnmount() {
-  //   window.removeEventListener('scroll', this.scrolling);
-  // }
-
   const [term, useTerm] = useState('');
   const [count, useCount] = useState(12);
   const handleChange = ({ target: { value } }) => {
@@ -99,11 +81,10 @@ function Home(props) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!props.toggle) {
-      useCount(0);
-      props.fetchGifs(term, count);
+      props.fetchGifs(term, 12);
       props.cancelStickers();
     } else {
-      props.fetchStickers(term, count);
+      props.fetchStickers(term, 12);
       props.cancelGifs();
     }
   }
@@ -122,32 +103,14 @@ function Home(props) {
 
     if(!(scrolled + vhHeigth + 500 >= fullHeight)) return;
     useCount(count + 12);
-    props.fetchGifs(term, count);     
+    if (!props.toggle) {
+      props.fetchGifs(term, count);
+      props.cancelStickers();
+    } else {
+      props.fetchStickers(term, count);
+      props.cancelGifs();
+    }
   }
-
-  // scrolling = async () => {
-
-  //   if(this.state.loading) return null;
-
-  //   const scrolled = window.scrollY;
-  //   const vhHeigth = window.innerHeight;
-  //   const fullHeight = document.body.clientHeight;
-
-  //   if(!(scrolled + vhHeigth + 450 >= fullHeight)) {
-  //     return null;
-  //   }
-
-  //   this.setState({ loading: true }, async () => {
-  //     const response = await api.gifs.getGifs(this.state.term, this.state.limit);
-  //     const gifs = response.data;
-
-  //     this.setState({
-  //       gifs: gifs,
-  //       limit: this.state.limit + 12,
-  //       loading: false,
-  //     });
-  //   })
-  // }
   return (
     <FormContainer>
       <Form onSubmit={handleSubmit}>
@@ -157,7 +120,6 @@ function Home(props) {
         </C>
         <ButtonSubmit type="submit"><i style={{ fontSize: '1.2em' }} className="fas fa-search"></i></ButtonSubmit>
       </Form>
-      <p onClick={scrolled}>Load</p>
     </FormContainer>
   )
 }
