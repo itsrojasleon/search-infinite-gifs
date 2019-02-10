@@ -1,3 +1,5 @@
+// Reuse this component for render gifs and stickers
+
 import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';

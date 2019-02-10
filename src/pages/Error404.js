@@ -1,10 +1,10 @@
 import React from 'react';
-import SearchBar from '../components/SearchBar';
 
 function Error404() {
   return (
-    <div>
-      <SearchBar />
+    <div style={{ textAlign: 'center' }}>
+      <h2>Uupsss!</h2>
+      <h3>Page not found...</h3>
     </div>
   )
 }
